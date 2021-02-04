@@ -1,0 +1,117 @@
+*
+  box-sizing: border-box
+  color: #11ece5
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+body
+  background: #070d17
+
+.square
+  display: flex
+  flex-wrap: wrap
+  width: 400px
+
+.cell
+  display: flex
+  justify-content: space-around
+  align-items: center
+  width: 100px
+  height: 100px
+  font-weight: 700
+  font-size: 30px
+  border: 1px solid #aaaaaa
+  border-radius: 5px
+  background: #00006f
+  cursor: pointer
+
+  &_count
+    display: flex
+    justify-content: space-around
+    align-items: center
+    width: 100px
+    height: 100px
+    font-weight: 700
+    font-size: 30px
+    border: 1px solid #aaaaaa
+    border-radius: 5px
+    background: #00006f
+    color: #ffffff
+    cursor: pointer
+
+    &:hover
+      color: #11ece5
+      border: 1px solid #11ece5
+      font-size: 35px
+
+
+  &-move
+    transition: transform 1s
+
+
+.fade
+  width: 100px
+  height: 100px
+  position: absolute
+  background: red
+  z-index: 55555
+
+.time
+  background: #000000
+  color: #ffffff
+  padding: 5px 10px
+  margin: 5px
+  border-radius: 5px
+
+.start-btn, .win-btn
+  font-size: 30px
+  font-weight: 600
+  color: #ffffff
+  width: 200px
+  height: 100px
+
+.active
+  transform: rotateY(180deg)
+  transition: 1s
+  color: #00006f
+
+.actives
+  transition: 1s
+  color: #ffffff
+
+.info .bg-dark
+  border-radius: 5px
+  color: #11ece5
+
+.stop, .time
+  color: #11ece5
+
+.bg
+  position: absolute
+  background: rgba(128, 128, 128, 0.5)
+  z-index: 55
+  width: 400px
+  height: 300px
+  border-radius: 5px
+
+.dispalay
+  display: none
+
+#game
+  position: relative
+
+.style-block
+  width: 400px
+
+.style-bg
+  width: 400px
+
+.count-items
+  color: #11ece5
+  border: 1px solid #11ece5
+  font-size: 35px
+

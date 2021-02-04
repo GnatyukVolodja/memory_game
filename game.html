@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>memory game</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./brain.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./style.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
+    <script src="./vue.min.js"></script>
+</head>
+<body>
+<div id="game" class="my-5 container">
+    <div class="row my-3 mx-5 info px-5">
+        <div class="col-5 d-flex align-items-center justify-content-start">
+            <span class="bg-dark p-2">coincidence: {{counters}}</span>
+            <span class="bg-dark p-2 mx-1">move: {{counter}}</span>
+        </div>
+        <div class="col-2 d-flex align-items-center justify-content-center">
+            <a v-show="stop" @click="reset()" href="javascript:void(0);" class="btn btn-dark">Stop</a>
+        </div>
+        <div class="col-5 d-flex align-items-center justify-content-end">
+            <span>Time: </span>
+            <span class="time hours">{{hh}}</span><span> : </span>
+            <span class="time mins">{{mm}}</span><span> : </span>
+            <span class="time secs">{{ss}}</span>
+        </div>
+    </div>
+    <div class="d-flex align-items-center justify-content-center">
+        <div :class="{dispalay: !start_block}" class="bg d-flex align-items-center justify-content-center">
+            <span>
+                <button @click="shuffle()" v-show="start" class="btn btn-info start-btn"> START</button>
+                <button v-show="win" @click="restart()" class="btn btn-info win-btn"> YOU WIN <br> Play again?</button>
+            </span>
+        </div>
+        <transition-group name="cell" tag="div" class="square m-0">
+            <div v-for="cell in cells" @click="item($event)" :id="cell.id" :key="cell.id" class="cell"> {{ cell.number
+                }}
+            </div>
+        </transition-group>
+    </div>
+    <div class="col-12 my-5 mb-3 d-flex flex-wrap align-items-center justify-content-center">
+        <div @click="count(4, 3, $event)" class="cell_count count-items">4x3</div>
+        <div @click="count(4, 4, $event)" class="cell_count">4x4</div>
+        <div @click="count(5, 4, $event)" class="cell_count">5x4</div>
+        <div @click="count(6, 5, $event)" class="cell_count">6x5</div>
+        <div @click="count(6, 6, $event)" class="cell_count">6x6</div>
+        <div @click="count(7, 6, $event)" class="cell_count">7x6</div>
+    </div>
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th class="text-center">squere</th>
+                <th class="text-center">coincidence</th>
+                <th class="text-center">move</th>
+                <th class="text-center">time</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(table, index) in tables" :id="index" :key="index">
+                <td class="text-center">{{index + 1}}</td>
+                <td class="text-center">{{table.squere}}</td>
+                <td class="text-center">{{table.coincidence}}</td>
+                <td class="text-center">{{table.move}}</td>
+                <td class="text-center">{{table.time}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
