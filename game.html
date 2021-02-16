@@ -29,16 +29,14 @@
         </div>
     </div>
     <div class="d-flex align-items-center justify-content-center">
-        <div :class="{dispalay: !start_block}" class="bg d-flex align-items-center justify-content-center">
+        <div :class="{display: !start_block, bg_z_index: !start_block}" class="bg d-flex align-items-center justify-content-center">
             <span>
                 <button @click="shuffle()" v-show="start" class="btn btn-info start-btn"> START</button>
                 <button v-show="win" @click="restart()" class="btn btn-info win-btn"> YOU WIN <br> Play again?</button>
             </span>
         </div>
         <transition-group name="cell" tag="div" class="square m-0">
-            <div v-for="cell in cells" @click="item($event)" :id="cell.id" :key="cell.id" class="cell"> {{ cell.number
-                }}
-            </div>
+            <div v-for="cell in cells" @click="item($event)" :id="cell.id" :key="cell.id" class="cell"> {{ cell.number }}</div>
         </transition-group>
     </div>
     <div class="col-12 my-5 mb-3 d-flex flex-wrap align-items-center justify-content-center">

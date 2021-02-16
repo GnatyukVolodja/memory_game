@@ -76,7 +76,7 @@ new Vue({
         document.querySelector('.bg').style.cssText = 'width: 700px; height: 600px; overflow: hidden;'
       }
       this.cells = _.shuffle(this.cells)
-      this.start_block = false
+      this.start_block = true
       this.win = false
       this.start = false
       this.stop = true
@@ -163,7 +163,7 @@ new Vue({
     },
     getTime: function () {
       this.currentDate = new Date
-      timer = new Date(this.currentDate - this.initialDate)
+      let timer = new Date(this.currentDate - this.initialDate)
       this.seconds = timer.getSeconds()
       this.minutes = timer.getMinutes()
       this.hours = timer.getUTCHours()
